@@ -1,61 +1,91 @@
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>Studenten Systeem</title>
+    <title>Le Gourmet Restaurant</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #f7f7f7;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .hero {
+            background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836') center/cover;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            margin: 10px;
+        }
+
+        .card p {
+            margin: 10px;
+            color: gray;
+        }
+
+        .price {
+            margin: 10px;
+            font-weight: bold;
+            color: green;
+        }
+
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 
-<body style="font-family:Arial; text-align:center; background:#f2f2f2; direction:ltr;">
+<body>
 
-    <h1>🎓 Studentenbeheer Systeem</h1>
-    <p>Ik leer programmeren en bouw een echte webapp 😎</p>
+<header>
+    🍽️ Le Gourmet Restaurant
+</header>
 
-    <h2>➕ Student toevoegen</h2>
+<div class="hero">
+    Welkom in ons restaurant 😋
+</div>
 
-    <input id="name" placeholder="Naam student">
-    <input id="grade" placeholder="Klas">
-    <button onclick="addStudent()">Toevoegen</button>
+<section class="menu">
 
-    <h2>📋 Studentenlijst</h2>
-    <ul id="list"></ul>
-
-<script>
-// تحميل البيانات من المتصفح
-let students = JSON.parse(localStorage.getItem("students")) || [];
-
-// عرض البيانات عند فتح الصفحة
-function showStudents() {
-    let list = document.getElementById("list");
-    list.innerHTML = "";
-
-    students.forEach(s => {
-        let li = document.createElement("li");
-        li.innerText = s.name + " - " + s.grade;
-        list.appendChild(li);
-    });
-
-    localStorage.setItem("students", JSON.stringify(students));
-}
-
-// إضافة طالب
-function addStudent() {
-    let name = document.getElementById("name").value;
-    let grade = document.getElementById("grade").value;
-
-    if(name === "" || grade === "") return;
-
-    students.push({name: name, grade: grade});
-
-    document.getElementById("name").value = "";
-    document.getElementById("grade").value = "";
-
-    showStudents();
-}
-
-// أول تشغيل
-showStudents();
-</script>
-
-</body>
-</html>
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e">
+        <h3>Burger Deluxe</h3>
