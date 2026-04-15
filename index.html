@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Studenten Systeem</title>
+</head>
+
+<body style="font-family:Arial; text-align:center; background:#f2f2f2; direction:ltr;">
+
+    <h1>🎓 Studentenbeheer Systeem</h1>
+    <p>Ik leer programmeren en bouw een echte webapp 😎</p>
+
+    <h2>➕ Student toevoegen</h2>
+
+    <input id="name" placeholder="Naam student">
+    <input id="grade" placeholder="Klas">
+    <button onclick="addStudent()">Toevoegen</button>
+
+    <h2>📋 Studentenlijst</h2>
+    <ul id="list"></ul>
+
+<script>
+// تحميل البيانات من المتصفح
+let students = JSON.parse(localStorage.getItem("students")) || [];
+
+// عرض البيانات عند فتح الصفحة
+function showStudents() {
+    let list = document.getElementById("list");
+    list.innerHTML = "";
+
+    students.forEach(s => {
+        let li = document.createElement("li");
+        li.innerText = s.name + " - " + s.grade;
+        list.appendChild(li);
+    });
+
+    localStorage.setItem("students", JSON.stringify(students));
+}
+
+// إضافة طالب
+function addStudent() {
+    let name = document.getElementById("name").value;
+    let grade = document.getElementById("grade").value;
+
+    if(name === "" || grade === "") return;
+
+    students.push({name: name, grade: grade});
+
+    document.getElementById("name").value = "";
+    document.getElementById("grade").value = "";
+
+    showStudents();
+}
+
+// أول تشغيل
+showStudents();
+</script>
+
+</body>
+</html>
